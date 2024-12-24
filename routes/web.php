@@ -1,10 +1,16 @@
 <?php
 
+use App\Events\ExampleEvent;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/broadcast', function () {
+    broadcast(new ExampleEvent(User::find(1)));
 });
 
 Route::get('/dashboard', function () {
